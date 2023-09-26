@@ -22,6 +22,7 @@ const Signup = () => {
         const SignUpVali = SignUpValidation(registerData)
         if (SignUpVali === 'success') {
             const userData = await signUp(registerData)
+            if(userData){
             if (userData.userId) {
                 localStorage.setItem('userId', userData.userId);
                 navigate('/')
@@ -29,9 +30,11 @@ const Signup = () => {
             } else {
                 setErrorMessage(userData.message)
             }
+        }else{
+            setErrorMessage("User already exist") 
+        }
         } else {
             setErrorMessage(SignUpVali)
-            console.log(SignUpVali);
         }
     }
 

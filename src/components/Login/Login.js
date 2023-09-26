@@ -44,7 +44,7 @@ const Login = () => {
         <div className="main-container">
         <div class="container3">
 
-            <div class="title">Registration</div>
+            <div class="title">Login</div>
             <form action="#">
                 <div class="user__details">
                     <div class="input__box">

@@ -11,6 +11,7 @@ import Login from "./components/Login/Login";
 import ProtectRouter from "./Routers/ProtectRouter";
 import PublicRoute from "./Routers/PublicRoute";
 import About from "./components/About/About";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<ProtectRouter><Home /></ProtectRouter>} />
             <Route path="/movie/:imdbID" element={<ProtectRouter><MovieDetail /></ProtectRouter>} />
             <Route path="/about" element={<ProtectRouter><About /></ProtectRouter>} />
+            <Route path="/contact" element={<ProtectRouter><Contact /></ProtectRouter>} />
             <Route path="/Signup" element={
               <PublicRoute><Signup /></PublicRoute>
             } />

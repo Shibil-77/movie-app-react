@@ -1,12 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { getAllMovies, getAllShows } from "../../features/movies/movieSlice";
+import { getAllMovies, getAllShows,getAllNewMovies } from "../../features/movies/movieSlice";
 import MovieCard from "../MovieCard/MovieCard";
 import "./MovieListing.scss";
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
   const shows = useSelector(getAllShows);
-  let renderMovies,
+  const newMovies = useSelector(getAllNewMovies)
+  let renderMovies,renderNewMovies,
     renderShows = "";
 
   renderMovies =
@@ -28,6 +29,17 @@ const MovieListing = () => {
         <h3>{shows.Error}</h3>
       </div>
     );
+
+    renderNewMovies =
+    newMovies.Response === "True" ? (
+      newMovies.Search.map((movie, index) => <MovieCard key={index} data={movie} />)
+    ) : (
+      <div className="newMovies-error">
+        <h3>{newMovies.Error}</h3>
+      </div>
+    );
+
+
   return (
     
     <div className="movie-wrapper">
@@ -38,6 +50,10 @@ const MovieListing = () => {
       <div className="show-list">
         <h2>Shows</h2>
         <div className="movie-container">{renderShows}</div>
+      </div>
+      <div className="show-list">
+        <h2>BatMan</h2>
+        <div className="movie-container">{renderNewMovies}</div>
       </div>
     </div>
   );
