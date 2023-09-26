@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const [errorMessage, setErrorMessage] = useState(null)
-    const [successMessage, setSuccessMessage] = useState(null)
     const [registerData, setRegisterData] = useState('')
     const navigate = useNavigate();
 
@@ -19,20 +18,14 @@ const Signup = () => {
     };
 
     async function handleSignUp(e) {
-        console.log("haiiiiiiiiiiiiiiiiii");
         e.preventDefault();
         const SignUpVali = SignUpValidation(registerData)
         if (SignUpVali === 'success') {
-            setSuccessMessage(null)
             const userData = await signUp(registerData)
-            console.log(userData, "userData");
             if (userData.userId) {
                 localStorage.setItem('userId', userData.userId);
                 navigate('/')
                 setErrorMessage(null)
-
-
-                setSuccessMessage("check user email")
             } else {
                 setErrorMessage(userData.message)
             }
@@ -80,7 +73,7 @@ const Signup = () => {
                 <div className="button">
                     <input type="submit" value="signup" onClick={handleSignUp} />
                 </div>
-                <p>{ }</p>
+                <p className="error-p">{errorMessage}</p>
             </form>
         </div>
         </div>

@@ -178,3 +178,7 @@ form .button input:hover {
     width: 0;
   }
 }
+
+.error-p{
+  color: red;
+}

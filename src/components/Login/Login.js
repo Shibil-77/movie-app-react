@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [errorMessage, setErrorMessage] = useState(null)
-    const [successMessage, setSuccessMessage] = useState(null)
     const [loginData, setLoginData] = useState('')
     const navigate = useNavigate();
 
@@ -22,7 +21,6 @@ const Login = () => {
         e.preventDefault();
         const LoginVali = LoginValidation(loginData)
         if (LoginVali) {
-            setSuccessMessage(null)
             const userData = await LoginApi(loginData)
             console.log(userData, "userData");
             if (userData) {
@@ -62,7 +60,7 @@ const Login = () => {
                 <div class="button">
                     <input type="submit" value="Login" onClick={handleSignUp} />
                 </div>
-                <p>{errorMessage}</p>
+                <p className="error-p">{errorMessage}</p>
             </form>
         </div>
         </div>
