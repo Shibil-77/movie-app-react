@@ -8,6 +8,9 @@ import Header from './components/Header/Header';
 import './App.scss';
 import Signup from "./components/signup/Signup";
 import Login from "./components/Login/Login";
+import ProtectRouter from "./Routers/ProtectRouter";
+import PublicRoute from "./Routers/PublicRoute";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -15,13 +18,17 @@ function App() {
       <Router>
         <Header />
         <div className="container">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/movie/:imdbID" element={<MovieDetail />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Login" element={<Login />} />         
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+          <Routes>
+
+            <Route path="/" element={<ProtectRouter><Home /></ProtectRouter>} />
+            <Route path="/movie/:imdbID" element={<ProtectRouter><MovieDetail /></ProtectRouter>} />
+            <Route path="/about" element={<ProtectRouter><About /></ProtectRouter>} />
+            <Route path="/Signup" element={
+              <PublicRoute><Signup /></PublicRoute>
+            } />
+            <Route path="/Login" element={<PublicRoute><Login /></PublicRoute>} />
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
         </div>
         <Footer />
       </Router>

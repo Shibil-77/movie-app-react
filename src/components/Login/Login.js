@@ -19,7 +19,6 @@ const Login = () => {
     };
 
     async function handleSignUp(e) {
-        console.log("haiiiiiiiiiiiiiiiiii");
         e.preventDefault();
         const LoginVali = LoginValidation(loginData)
         if (LoginVali) {
